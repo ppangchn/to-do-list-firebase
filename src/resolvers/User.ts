@@ -29,15 +29,24 @@ export const fetchUserById = async ({ where }) => {
 };
 
 export const createUser = async ({ data }) => {
-	const { password, ...restData } = data;
-	const hash = await bcrypt.hash(password, 10);
-	userCollection.add({ password: hash, ...restData });
-	const user = await userCollection.add({ ...data });
+	const { username, password, ...restData } = data;
+	const user = await userCollection
+		.where('username', '==', username)
+		.get()
+		.then(async snapshot => {
+			if (!snapshot.empty) {
+				throw new Error(`Username ${username} has already taken`);
+			}
+			const hash = await bcrypt.hash(password, 10);
+			userCollection.add({ password: hash, ...restData });
+			return userCollection.add({ ...data });
+		});
+
 	return user;
 };
 
 export const login = async ({ username, password }) => {
-	const user = await userCollection
+	const user: any = await userCollection
 		.where('username', '==', username)
 		.get()
 		.then(snapshot => {
@@ -50,5 +59,9 @@ export const login = async ({ username, password }) => {
 			});
 			return user;
 		});
+	const valid = await bcrypt.compareSync(password, user.password);
+	if (!valid) {
+		throw new Error('Invalid Password');
+	}
 	return user;
 };

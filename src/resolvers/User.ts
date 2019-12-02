@@ -35,8 +35,7 @@ export const createUser = async ({ data }) => {
 				throw new Error(`Username ${username} has already taken`);
 			}
 			const hash = await bcrypt.hash(password, 10);
-			userCollection.add({ password: hash, ...restData });
-			return userCollection.add({ ...data });
+			return userCollection.add({ username, password: hash, ...restData });
 		});
 
 	return user;

@@ -11,12 +11,9 @@ export const fetchUserById = async ({ where }) => {
 		.get()
 		.then(doc => {
 			if (!doc.exists) {
-				throw new Error('No such document!');
+				throw new Error(`No such user found for id: ${id}`);
 			}
 			return doc.data();
-		})
-		.catch(err => {
-			throw new Error('Error getting document ' + err);
 		});
 	const todoList = [];
 	if (user.todoList) {

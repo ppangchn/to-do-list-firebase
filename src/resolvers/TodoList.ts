@@ -11,7 +11,7 @@ export const createTodoListItemByUser = async ({ data, userId }) => {
 		.get()
 		.then(doc => {
 			if (!doc.exists) {
-				throw new Error('No such document!');
+				throw new Error(`No such user found for id: ${userId}`);
 			}
 			return doc.data();
 		})

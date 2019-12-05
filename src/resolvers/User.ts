@@ -19,7 +19,7 @@ export const fetchUserById = async ({ where }) => {
 	if (user.todoList) {
 		for (const todoListItem of user.todoList) {
 			const doc = await todoListItem.get();
-			todoList.push(doc.data());
+			todoList.push({ id: doc.id, ...doc.data() });
 		}
 	}
 	return { ...user, id, todoList };

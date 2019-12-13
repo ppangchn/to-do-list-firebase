@@ -1,4 +1,4 @@
-import { queryType, stringArg, makeSchema } from 'nexus';
+import { makeSchema } from 'nexus';
 import { GraphQLServer } from 'graphql-yoga';
 import { Query } from './types/Query';
 import { Mutation } from './types/Mutation';

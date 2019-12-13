@@ -3,6 +3,7 @@ import { User, UserCreateInput } from './User';
 import { TodoListItem, TodoListItemCreateInput } from './TodoList';
 import { createUser, login } from '../resolvers/User';
 import { createTodoListItemByUser } from '../resolvers/TodoList';
+// import { DocumentReference } from '@google-cloud/firestore';
 
 export const Mutation = mutationType({
 	definition(t) {

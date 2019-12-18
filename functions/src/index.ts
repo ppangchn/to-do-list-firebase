@@ -19,7 +19,9 @@ const gqlServer = () => {
 	const server = new ApolloServer({
 		schema,
 		introspection: true,
-		playground: true,
+		playground: {
+			endpoint: '/api',
+		},
 	});
 
 	server.applyMiddleware({ app, path: '/', cors: true });
@@ -29,4 +31,4 @@ const gqlServer = () => {
 
 const server = gqlServer();
 
-export const firebaseApi = functions.https.onRequest(server);
+export const api = functions.https.onRequest(server);

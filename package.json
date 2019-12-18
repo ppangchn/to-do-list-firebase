@@ -6,8 +6,7 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"dev": "ts-node-dev --no-notify --transpileOnly --respawn ./src",
-		"build": "cd functions/src && rm -rf generated/* && rm -rf resolvers/* && rm -rf types/* && cd ../.. && cp -a src/generated/*  functions/src/generated && cp -a src/resolvers/*  functions/src/resolvers && cp -a src/types/*  functions/src/types",
-		"lint": "cd functions && yarn lint"
+		"build": "cd functions/src && rm -rf generated/* && rm -rf resolvers/* && rm -rf types/* && cd ../.. && cp -a src/generated/*  functions/src/generated && cp -a src/resolvers/*  functions/src/resolvers && cp -a src/types/*  functions/src/types"
 	},
 	"author": "",
 	"license": "ISC",

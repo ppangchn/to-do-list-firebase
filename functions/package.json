@@ -27,8 +27,8 @@
 	},
 	"devDependencies": {
 		"firebase-functions-test": "^0.1.7",
-		"tslint": "^5.20.1",
-		"typescript": "^3.7.4"
+		"tslint": "^5.8.1",
+		"typescript": "^3.3.4"
 	},
 	"private": true
 }

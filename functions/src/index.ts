@@ -1,4 +1,4 @@
-import functions from 'firebase-functions';
+import * as functions from 'firebase-functions';
 import express from 'express';
 import { ApolloServer } from 'apollo-server-express';
 import { makeSchema } from 'nexus';
